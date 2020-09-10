@@ -1,2 +1,2 @@
-Savings tracker website 
-By Bermet Kydykova, Enxhi Osmanllari, Marko Grgic
+# Savings tracker website 
+By Bermet Kydykova, Enxhi Osmanllari, Marko Grgic, Jiancong Lu
