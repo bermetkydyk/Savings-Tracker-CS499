@@ -1,9 +1,9 @@
 # Coin - Savings tracker website 
 By Bermet Kydykova, Enxhi Osmanllari, Marko Grgic, Jiancong Lu
 
-# Instruction for setup/start Backend server
+## Instruction for setup/start Backend server
 
-# Installation:
+### Installation:
 
 - Install PostgreSQL on your computer and create a password for the database.
 - If npm isn't installed on your computer, download it here https://www.npmjs.com/get-npm. This will help you with npm commands
@@ -21,13 +21,15 @@ By Bermet Kydykova, Enxhi Osmanllari, Marko Grgic, Jiancong Lu
 - Open a browser and type in "localhost:5000" in the URL. The connection has been established and everything is running fine if you see an "ok" message.
 
 
-# Usage/Commands:
+### Usage/Commands:
 `localhost:5000/users` - GET request to view all users in database
 
 `localhost:5000/users/add` - POST request to add users to database
 
-# Instruction for setup/start Frontend server
+## Instruction for setup/start Frontend server
 Frontend is using a separate server right now, will run build with webpack later for production.
 - Navigate to client folder
-- npm i
-- npm start
+```
+npm i
+npm start
+```
