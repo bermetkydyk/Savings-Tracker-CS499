@@ -1,6 +1,8 @@
 # Coin - Savings tracker website 
 By Bermet Kydykova, Enxhi Osmanllari, Marko Grgic, Jiancong Lu
 
+
+
 ## Instruction for setup/start Backend server
 
 ### Installation:
@@ -25,6 +27,8 @@ By Bermet Kydykova, Enxhi Osmanllari, Marko Grgic, Jiancong Lu
 `localhost:5000/users` - GET request to view all users in database
 
 `localhost:5000/users/add` - POST request to add users to database
+
+
 
 ## Instruction for setup/start Frontend server
 Frontend is using a separate server right now, will run build with webpack later for production.
