@@ -3,6 +3,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import { createGlobalStyle } from 'styled-components';
 import Header from './Header';
+import Landing from './Landing';
+import Footer from './Footer';
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Open Sans', sans-serif;
@@ -16,12 +18,12 @@ const GlobalStyle = createGlobalStyle`
 const Dashboard = () => <h2>Dashboard</h2>
 const IncomeNew = () => <h2>IncomeNew</h2>
 const AddSubscription = () => <h2>AddSubscription</h2>
-const Landing = () => <h2>Landing</h2>
+
 
 
 const App = () => {
     return (
-    <div className="container">
+    <div>
         <GlobalStyle />
         <Header />
         <BrowserRouter>
@@ -31,6 +33,7 @@ const App = () => {
                 <Route exact path="/income/new" component={IncomeNew} />
             </div>
         </BrowserRouter>
+        <Footer />
     </div>
     );
 };
