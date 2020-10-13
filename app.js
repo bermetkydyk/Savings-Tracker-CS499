@@ -15,6 +15,6 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
-app.listen(5000, () => {
+app.listen(3000, () => {
     console.log('app now listening for requests on port 3000');
 });
