@@ -3,6 +3,7 @@ import styled from "styled-components";
 import M from "materialize-css";
 import { AdviceCard } from './AdviceCard'
 import { Card } from './Card';
+import Add from '../Add';
 
 export const Banner = styled.div`
     height: 200px;
@@ -84,6 +85,9 @@ class Summary extends Component {
                         </div>
                    
                     
+                </div>
+                <div className="fixed-action-btn hide-on-med-and-down">
+                    <Add />
                 </div>
             </div>
             </>

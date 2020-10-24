@@ -29,11 +29,11 @@ class Add extends Component {
                     <div class="modal-content">
                     <h4 className="center-align">What would you like to add?</h4>
                     <div className="row">
-                        <div className="col s6">
+                        <div className="col s6 m4">
                             <a class="center-align waves-effect waves-light btn-large btn-floating" href="/add/income"><i class="material-icons">add</i></a>
                             <p>Add Income</p>
                         </div>
-                        <div className="col s6">
+                        <div className="col s6 m4">
                             <a class="waves-effect waves-light btn-large btn-floating" href=''><i class="material-icons">remove</i></a>
                             <p>Add Expense</p>
                         </div>

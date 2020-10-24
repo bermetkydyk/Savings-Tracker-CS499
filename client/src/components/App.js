@@ -10,7 +10,6 @@ import Footer from './Footer';
 import Summary from './Summary/Summary';
 import Activity from './Activity/Activity';
 import Goal from './Goal/Goal';
-import Login from './Login/Login';
 import AddIncome from './AddIncome/AddIncome';
 import { GlobalStyle } from './Styles/GlobalStyle';
 
@@ -35,7 +34,6 @@ class App extends Component {
                 <Router>
                     <div>
                         <Route exact path="/" component={Landing} />
-                        <Route exact path="/login" component={Login} />
                         <Route exact path="/dashboard" component={Summary} />
                         <Route exact path="/activity" component={Activity} />
                         <Route exact path="/goal" component={Goal} />
