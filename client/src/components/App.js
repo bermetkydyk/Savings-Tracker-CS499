@@ -1,18 +1,18 @@
-import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
-import { createGlobalStyle } from 'styled-components';
 import Header from './Header';
 import Landing from './Landing';
+import Bottombar from './Bottombar';
 import Footer from './Footer';
-const GlobalStyle = createGlobalStyle`
-  body {
-    font-family: 'Open Sans', sans-serif;
-  }
-  h1, h2, h3 {
-    font-family: 'Righteous', cursive;
-  }
-`
+import Summary from './Summary/Summary';
+import Activity from './Activity/Activity';
+import Goal from './Goal/Goal';
+import Login from './Login/Login';
+import AddIncome from './AddIncome/AddIncome';
+import { GlobalStyle } from './Styles/GlobalStyle';
 
 
 const Dashboard = () => <h2>Dashboard</h2>
@@ -21,21 +21,33 @@ const AddSubscription = () => <h2>AddSubscription</h2>
 
 
 
-const App = () => {
-    return (
-    <div>
-        <GlobalStyle />
-        <Header />
-        <BrowserRouter>
+class App extends Component {
+    
+    componentDidMount(){
+        this.props.fetchUser();
+    }
+
+    render (){
+        return (
             <div>
-                <Route exact path="/" component={Landing} />
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/income/new" component={IncomeNew} />
+                <GlobalStyle />
+                <Header />
+                <Router>
+                    <div>
+                        <Route exact path="/" component={Landing} />
+                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/dashboard" component={Summary} />
+                        <Route exact path="/activity" component={Activity} />
+                        <Route exact path="/goal" component={Goal} />
+                        <Route exact path="/add/income" component={AddIncome} />
+                    </div>
+                </Router>
+                <Bottombar />
+                <Footer />
             </div>
-        </BrowserRouter>
-        <Footer />
-    </div>
-    );
+        );
+    }
+
 };
 
-export default App;
+export default connect(null, actions)(App);
