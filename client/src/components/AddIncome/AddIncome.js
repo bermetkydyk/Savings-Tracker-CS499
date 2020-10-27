@@ -4,7 +4,17 @@ import M from "materialize-css";
 
 
 class AddIncome extends Component {
-  
+
+    componentDidMount() {
+        let Collapsible = document.querySelectorAll('.collapsible');
+        let FormSelect = document.querySelectorAll('select');
+        let options = {
+            
+        };
+        
+        M.Collapsible.init(Collapsible, options);
+        M.FormSelect.init(FormSelect, options);
+    }
 
   
     render() {
@@ -24,8 +34,14 @@ class AddIncome extends Component {
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                    <input placeholder="cash, tip ..." id="income_src" type="text" class="validate"></input>
-                                    <label for="income_src">Income source</label>
+                                        <select>
+                                        <option value="" disabled selected>Choose an income type</option>
+                                        <option value="1">Cash</option>
+                                        <option value="2">Bussiness</option>
+                                        <option value="3">Investment</option>
+                                        <option value="4">Other</option>
+                                        </select>
+                                        <label>Income Type</label>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -49,35 +65,11 @@ class AddIncome extends Component {
                                 </div>
 
                                 <div class="row">
-                                    <div class="col s12">
-                                    <label for="password">Is it a recuring income?</label>
-                                    <div id="recuring" class="switch">
-                                        <label>
-                                        No
-                                        <input type="checkbox"></input>
-                                        <span class="lever"></span>
-                                        Yes
-                                        </label>
-                                    </div>
-                                    </div>
-                                </div>
-
-                                <div class="input-field col s12">
-                                    <select>
-                                    <option value="" disabled selected>Recurring every:</option>
-                                    <option value="1">1 </option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
-                                    </select>
-                                    <label>Materialize Select</label>
-                                </div>
-
-                                <div class="row">
                                     <div class="input-field col s12">
                                     <button class="btn btn-large waves-effect waves-light col s12 teal darken-3" type="submit" name="action">Add</button>
                                     </div>
                                     <div class="input-field col s12">
-                                        <a className="btn btn-large waves-effect waves-light col s12 teal lighten-3" href="/dashboard">Cancel</a>
+                                        <a className="btn btn-large waves-effect waves-light col s12 teal lighten-3" href="/summary">Cancel</a>
                                     </div>
                                 </div>
                             </form>

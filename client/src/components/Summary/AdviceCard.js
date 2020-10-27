@@ -8,8 +8,8 @@ export const AdviceCard = styled.div`
     background-color: #a5d6a7;
     background-position: center;
     background-size: cover;
-    filter: contrast(85%);
-    border-radius: 7px;
+    filter: contrast(100%);
+
     margin-top: 5px;
     transition-property: box-shadow margin-top filter;
     box-shadow: 0px 0px 2px 0px grey;

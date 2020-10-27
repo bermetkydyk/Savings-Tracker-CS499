@@ -23,7 +23,7 @@ router.get(
     '/google/redirect', 
     passport.authenticate('google'),
     (req, res) => {
-        res.redirect('http://localhost:3000/dashboard');
+        res.redirect('http://localhost:3000/summary');
     }   
 );
 

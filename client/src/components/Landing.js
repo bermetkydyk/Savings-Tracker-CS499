@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import M from "materialize-css";
-
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 
 class Landing extends Component {
@@ -15,14 +16,27 @@ class Landing extends Component {
         
         M.Carousel.init(carousel, options);
     }
-  
+
+    renderContent(){
+        switch(this.props.auth){
+          case null:
+            return;
+          case false:
+            return (
+                <div className="carousel-fixed-item center">
+                    <a href="/auth/google" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Login with Google</a>
+                </div>
+            );
+          default:
+            return;
+        }
+    }
+
     render() {
 
         return (
             <div className="carousel carousel-slider center">
-                <div className="carousel-fixed-item center">
-                    <a href="/auth/google" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Login with Google</a>
-                </div>
+                {this.renderContent()}
                 <div className="carousel-item black-text" href="#one!">
                     <div className="container">
                         <h1 class="header center ">COIN</h1>
@@ -50,4 +64,10 @@ class Landing extends Component {
     }
 }
 
-export default Landing;
+
+function mapStateToProps(state) {
+    return { auth: state.auth };
+  }
+  
+  
+export default connect(mapStateToProps)(Landing);

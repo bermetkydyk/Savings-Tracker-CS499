@@ -47,7 +47,7 @@ class Header extends Component {
             <div className="nav-content">
               <div className="container">
                 <ul className="tabs tabs-transparent">
-                  <li className="tab"><a href="/dashboard">Dashboard</a></li>
+                  <li className="tab"><a href="/summary">Summary</a></li>
                   <li className="tab"><a href="/activity">Activity</a></li>
                   <li className="tab"><a href="/goal">Goal</a></li>
                   <li className="tab right"><a href="/add/income">Add Income</a></li>
@@ -69,8 +69,8 @@ class Header extends Component {
                 <div className="container">
                   <Router>
                   <Link 
-                    to={this.props.auth ? '/dashboard' : '/' } 
-                    className="brand-logo" style={{marginLeft: "20px"}}
+                    to={this.props.auth ? '/summary' : '/' } 
+                    className="brand-logo" style={{marginLeft: "20px", fontFamily: "'Righteous',cursive"}}
                   >
                     COIN
                   </Link>
