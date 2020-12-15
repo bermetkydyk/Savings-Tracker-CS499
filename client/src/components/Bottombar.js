@@ -17,23 +17,12 @@ const BottomNavStyled = styled.div`
   gap: 10px;
   z-index: 8;
 `
-const NavItemStyled = styled.a`
+const NavItemStyled = styled.div`
   float: left;
   display: block;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-`
-const NavItem3Styled = styled.div`
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  padding-left: 50px;
-  padding-right: 0px;
   text-decoration: none;
   font-size: 17px;
 `
@@ -78,13 +67,17 @@ class BottomBar extends Component {
                 </AddButtonStyled>
                 <BottomNavStyled>
 
-                <NavItemStyled href="/summary">
-                <i className="material-icons">home</i>
+                <NavItemStyled>
+                  <a href="/summary">
+                    <i className="material-icons white-text">home</i>
+                  </a>
                 <p style={{ margin:"0px", fontSize: "15px"}}>Summary</p>
                 </NavItemStyled>
 
-                <NavItemStyled href="/activity">
-                <i className="material-icons">event_note</i>
+                <NavItemStyled>
+                  <a href="/activity">
+                    <i className="material-icons white-text">event_note</i>
+                  </a>
                 <p style={{ margin:"0px", fontSize: "15px"}}>Activity</p>
                 </NavItemStyled>
 
@@ -92,9 +85,11 @@ class BottomBar extends Component {
 
                 </NavItemStyled>
 
-                <NavItemStyled href="/goal">
-                <i className="material-icons">done</i>
-                <p style={{ margin:"0px", fontSize: "15px"}}>Goal</p>
+                <NavItemStyled>
+                  <a href="/goal">
+                    <i className="material-icons white-text">done</i>
+                  </a>
+                  <p style={{ margin:"0px", fontSize: "15px"}}>Goal</p>
                 </NavItemStyled>
 
                 <NavItemStyled>
@@ -125,7 +120,6 @@ class BottomBar extends Component {
     }
 
     render() {
-        console.log(this.props.auth);
         return (
           <>
           <div className="hide-on-large-only">
@@ -151,20 +145,20 @@ class BottomBar extends Component {
               <div className="modal-content">
                     <h4 className="center-align" style={{marginBottom: "45px"}}>What would you like to add?</h4>
                     <div className="row">
-                        <div className="col s3  m3 ">
-                            <p className="center-align"><a className="center-align waves-effect waves-light btn-large btn-floating light-green" href="/add/income"><i className="material-icons">autorenew</i></a></p>
-                            <p className="center-align">Setup Salary</p>
+                        <div className="col s3 m3 ">
+                            <p className="center-align"><a className="center-align waves-effect waves-light btn-large btn-floating light-blue" href="/add/goal/new"><i className="material-icons">playlist_add_check</i></a></p>
+                            <p className="center-align">Add Goal</p>
                         </div>
                         <div className="col s3 m3 ">
-                            <p className="center-align"><a className="center-align waves-effect waves-light btn-large btn-floating light-blue" href="/add/income"><i className="material-icons">account_balance</i></a></p>
-                            <p className="center-align">Setup Saving</p>
+                            <p className="center-align"><a className="center-align waves-effect waves-light btn-large btn-floating light-blue" href="/fileupload"><i className="material-icons">file_upload</i></a></p>
+                            <p className="center-align">Upload Data File</p>
                         </div>
                         <div className="col s3  m3 ">
-                            <p className="center-align"><a className="center-align waves-effect waves-light btn-large btn-floating lime" href="/add/income"><i className="material-icons">add</i></a></p>
+                            <p className="center-align"><a className="center-align waves-effect waves-light btn-large btn-floating lime" href="/add/income/new"><i className="material-icons">add</i></a></p>
                             <p className="center-align">Add Income</p>
                         </div>
                         <div className="col s3  m3 ">
-                            <p className="center-align"><a className="waves-effect waves-light btn-large btn-floating deep-orange" href=''><i className="material-icons">remove</i></a></p>
+                            <p className="center-align"><a className="waves-effect waves-light btn-large btn-floating deep-orange" href='/add/expense/new'><i className="material-icons">remove</i></a></p>
                             <p className="center-align">Add Expense</p>
                         </div>
                     </div>

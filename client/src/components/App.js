@@ -10,10 +10,10 @@ import Footer from './Footer';
 import Summary from './Summary/Summary';
 import Activity from './Activity/Activity';
 import Goal from './Goal/Goal';
-import AddIncome from './AddIncome/AddIncome';
 import IncomeNew from './AddIncome/IncomeNew';
 import ExpenseNew from './AddExpense/ExpenseNew';
-
+import GoalNew from './AddGoal/GoalNew';
+import FileUpload from './FileUpload/FileUpload';
 import { GlobalStyle } from './Styles/GlobalStyle';
 
 class App extends Component {
@@ -33,9 +33,10 @@ class App extends Component {
                         <Route exact path="/summary" component={Summary} />
                         <Route exact path="/activity" component={Activity} />
                         <Route exact path="/goal" component={Goal} />
-                        <Route exact path="/add/income" component={AddIncome} />
                         <Route exact path="/add/income/new" component={IncomeNew} />
                         <Route exact path="/add/expense/new" component={ExpenseNew} />
+                        <Route exact path="/add/goal/new" component={GoalNew} />
+                        <Route exact path="/fileupload" component={FileUpload} />
                     </div>
                 </Router>
                 <Bottombar />

@@ -29,7 +29,7 @@ class Header extends Component {
           return (
             <span>
             <li className="tab"><a href="/">Home</a></li>
-            <li><a href="#">Setting</a></li>
+            <li><a href="/setting">Setting</a></li>
             <li><a href="/auth/logout">Logout</a></li>
             </span>
           );
@@ -50,8 +50,9 @@ class Header extends Component {
                   <li className="tab"><a href="/summary">Summary</a></li>
                   <li className="tab"><a href="/activity">Activity</a></li>
                   <li className="tab"><a href="/goal">Goal</a></li>
-                  <li className="tab right"><a href="/add/income">Add Income</a></li>
-                  <li className="tab right"><a href="/goal">Add Expense</a></li>
+                  <li className="tab right"><a href="/add/expense/new">Add Expense</a></li>
+                  <li className="tab right"><a href="/add/income/new">Add Income</a></li>
+                  
                 </ul>
               </div>
             </div>

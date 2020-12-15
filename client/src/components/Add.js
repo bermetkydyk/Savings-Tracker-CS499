@@ -29,20 +29,20 @@ class Add extends Component {
                     <div className="modal-content">
                     <h4 className="center-align" style={{marginBottom: "45px"}}>What would you like to add?</h4>
                     <div className="row">
-                        <div className="col s3  m3 ">
-                            <p className="center-align"><a className="center-align waves-effect waves-light btn-large btn-floating light-green" href="/add/income"><i className="material-icons">autorenew</i></a></p>
-                            <p className="center-align">Setup Salary</p>
+                        <div className="col s3 m3 ">
+                            <p className="center-align"><a className="center-align waves-effect waves-light btn-large btn-floating light-blue" href="/add/goal/new"><i className="material-icons">playlist_add_check</i></a></p>
+                            <p className="center-align">Add Goal</p>
                         </div>
                         <div className="col s3 m3 ">
-                            <p className="center-align"><a className="center-align waves-effect waves-light btn-large btn-floating light-blue" href="/add/income"><i className="material-icons">account_balance</i></a></p>
-                            <p className="center-align">Setup Saving</p>
+                            <p className="center-align"><a className="center-align waves-effect waves-light btn-large btn-floating light-blue" href="/fileupload"><i className="material-icons">file_upload</i></a></p>
+                            <p className="center-align">Upload Data File</p>
                         </div>
-                        <div className="col s3  m3 ">
-                            <p className="center-align"><a className="center-align waves-effect waves-light btn-large btn-floating lime" href="/add/income"><i className="material-icons">add</i></a></p>
+                        <div className="col s3 m3 ">
+                            <p className="center-align"><a className="center-align waves-effect waves-light btn-large btn-floating lime" href="/add/income/new"><i className="material-icons">add</i></a></p>
                             <p className="center-align">Add Income</p>
                         </div>
-                        <div className="col s3  m3 ">
-                            <p className="center-align"><a className="waves-effect waves-light btn-large btn-floating deep-orange" href=''><i className="material-icons">remove</i></a></p>
+                        <div className="col s3 m3 ">
+                            <p className="center-align"><a className="waves-effect waves-light btn-large btn-floating deep-orange" href='/add/expense/new'><i className="material-icons">remove</i></a></p>
                             <p className="center-align">Add Expense</p>
                         </div>
                     </div>
