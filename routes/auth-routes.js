@@ -10,7 +10,7 @@ router.get('/login', (req, res) => {
 router.get('/logout', (req, res) => {
     // handle with passport
     req.logout();
-    res.redirect('http://localhost:3000/');
+    res.redirect('/');
 });
 
 // auth with google+
@@ -23,7 +23,7 @@ router.get(
     '/google/redirect', 
     passport.authenticate('google'),
     (req, res) => {
-        res.redirect('http://localhost:3000/summary');
+        res.redirect('/summary');
     }   
 );
 
