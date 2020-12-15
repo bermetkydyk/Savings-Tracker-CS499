@@ -1,0 +1,13 @@
+.tabs .tab a.active {
+    background-color:#b2dfdb;
+    color:#000;
+} /*Background and text color when a tab is active*/
+
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+    background-color:#b2dfdb;
+    color:#000;
+} /*Background and text color when a tab is active*/
+
+.tabs .indicator {
+    background-color:#26A69A;
+} 
