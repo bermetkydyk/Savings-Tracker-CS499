@@ -10,7 +10,9 @@ const key = require('./config/keys');
 
 const app = express();
 
-app.use(bodyParser.json());
+//body parser
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false}));
 
 // Enable Cookies
 app.use(
@@ -22,6 +24,8 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+global.__basedir = __dirname;
 
 // Database Setup
 //Database 
@@ -35,18 +39,14 @@ db.authenticate()
 
 //user routes
 app.use('/users', require('./routes/userRoutes'));
-
-
-// Routes Setup
-app.set('view engine', 'ejs');
+app.use('/userGoals', require("./routes/userGoalsRoutes"));
+app.use('/userExpenses',require("./routes/userExpensesRoutes"));
+app.use('/userIncomes',require("./routes/userIncomeRoutes"));
+app.use('/api/file/',require("./routes/excelUploadRoutes"));
 
 // set up routes
 app.use('/auth', authRoutes);
 
-// create home route
-// app.get('/', (req, res) => {
-//     res.render('home');
-// });
 
 app.use(express.static(__dirname + '/build'));
 
