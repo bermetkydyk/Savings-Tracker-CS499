@@ -14,11 +14,17 @@ npm run dev
 ```
 - Open a browser tab and visit localhost:5000 for the demo
 
+## Project Structure
+
+- The root folder consists mainly the Node.js backend
+- The "client" folder consists all the code for frontent. 
+
+------
 
 ## Instruction for setup/start Backend server
 Note: Backend has a separate repo at
 https://github.com/mgrgic1/-49900-Server-Backend
-# Installation:
+### Installation:
 
 - Install PostgreSQL on your computer and create a password for the database.
 - If npm isn't installed on your computer, download it here https://www.npmjs.com/get-npm. This will help you with npm commands
@@ -29,7 +35,7 @@ https://github.com/mgrgic1/-49900-Server-Backend
 - Everything should be set up. Type "npm run dev" into your command/terminal. 
 - Open a browser and type in "localhost:5000" in the URL. The connection has been established and everything is running fine if you see an "ok" message.
 
-# SQL Dump:
+### SQL Dump:
 
 The "dump.sql" file takes the entire CoinDB that I have (tables, columns, etc) and copies it to your pgAdmin so that you have it as well.
 To use:
@@ -48,7 +54,7 @@ To use:
 
 - If you go to CoinDB > Schemas > Tables, you'll see all the required tables and columns are there
 
-# Users Commands:
+### Users Commands:
 `localhost:5000/users` - GET request to view a users in the database
 
 `localhost:5000/users/add` - POST request to add users to database
@@ -57,7 +63,7 @@ To use:
 
 `localhost:5000/users/remove/id` - DELETE request to remove a user by their ID
 
-# User Goals Commands:
+### User Goals Commands:
 `localhost:5000/userGoals/id` - GET request to view all goals for a specific USER ID. The `id` specified must be the user's id.
 
 `localhost:5000/userGoals/goalById/goalId` - GET request to view a specific goal. The `goalId` specified must be the goal's id
@@ -68,7 +74,7 @@ To use:
 
 `localhost:5000/userGoals/remove/goalId` - DELETE request to remove a user's goal. Must specify a GOAL ID, not a user id.
 
-# User Expenses Commands:
+### User Expenses Commands:
 `localhost:5000/userExpenses/expenseById/:expenseId` - GET request to view a specific expense. Must specify the expenseId (not the user's id)
 
 `localhost:5000/userExpenses/currentUser` - GET request to view ALL expenses for the current user
@@ -83,7 +89,7 @@ To use:
 
 `localhost:5000/userExpenses/remove/:incomeId` - DELETE request to remove a specific expense. Must specify the expense id
 
-# User Income Commands:
+### User Income Commands:
 `localhost:5000/userIncome/incomeById/:incomeId` - GET request to view a specific income. Must specify the incomeId (not the user's id)
 
 `localhost:5000/userIncome/currentUser` - GET request to view ALL income for the current user
@@ -98,8 +104,11 @@ To use:
 
 `localhost:5000/userIncome/remove/:incomeId` - DELETE request to remove a specific income. Must specify the income id
 
+------
 
 ## Instruction for setup/start Frontend server
+
+### Start frontend server
 Frontend is using a separate server for development, to start the frontend server:
 - Navigate to "client" folder in your terminal/command line interface and run commands below:
 ```
@@ -109,7 +118,8 @@ npm start
 - The frontend server should automatically opens a new tab in your browser at
 localhost:3000
 
-If you made any changes under client folder, you need to rebuild the frontend:
+### Build process
+If you made any changes under client folder, you need to rebuild the frontend (make sure navigate to "client" folder first):
 ```
 npm run build
 ```
