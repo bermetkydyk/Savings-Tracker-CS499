@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.05b3771a.chunk.css",
+    "main.js": "/static/js/main.100444dd.chunk.js",
+    "main.js.map": "/static/js/main.100444dd.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
+    "static/css/2.9a9a1f6f.chunk.css": "/static/css/2.9a9a1f6f.chunk.css",
+    "static/js/2.da7145a9.chunk.js": "/static/js/2.da7145a9.chunk.js",
+    "static/js/2.da7145a9.chunk.js.map": "/static/js/2.da7145a9.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.2e9064f56edbc6959bdb82a6c98798ad.js": "/precache-manifest.2e9064f56edbc6959bdb82a6c98798ad.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.9a9a1f6f.chunk.css.map": "/static/css/2.9a9a1f6f.chunk.css.map",
+    "static/css/main.05b3771a.chunk.css.map": "/static/css/main.05b3771a.chunk.css.map",
+    "static/js/2.da7145a9.chunk.js.LICENSE.txt": "/static/js/2.da7145a9.chunk.js.LICENSE.txt",
+    "static/media/Bottombar.png": "/static/media/Bottombar.5c0722c4.png",
+    "static/media/guide_pic.png": "/static/media/guide_pic.a34eae13.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.09b85ec0.js",
+    "static/css/2.9a9a1f6f.chunk.css",
+    "static/js/2.da7145a9.chunk.js",
+    "static/css/main.05b3771a.chunk.css",
+    "static/js/main.100444dd.chunk.js"
+  ]
+}
