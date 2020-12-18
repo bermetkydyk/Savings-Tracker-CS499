@@ -51,6 +51,18 @@ const UserGoals = db.define('user_goals',{
         type: Sequelize.INTEGER,
         allowNull: true,
         allowEmpty: false,
+    },
+
+    isComplete:{
+        type: Sequelize.STRING,
+        allowNull: false,
+        allowEmpty: false,
+    },
+
+    savingsTowardsGoal:{
+        type: Sequelize.DOUBLE,
+        allowNull:true,
+        allowEmpty: true
     }
 
 },
