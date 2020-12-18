@@ -22,8 +22,9 @@ router.get('/incomeById/:incomeId', async (req,res,next) => {
 
 //GET all expenses for current user
 router.get('/currentUser', async (req,res) => {
-    // Todo: create a require login middle ware
-    //console.log(req.user.dataValues.id);
+    if (!req.user){
+        return res.status(401).send({error:'You must log in!'});
+    }
     const incomes = await UserIncome.findAll(
         { where: {userId: req.user.dataValues.id}, 
           order: [

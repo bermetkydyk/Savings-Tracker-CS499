@@ -26,8 +26,9 @@ router.get('/expenseById/:expenseId', async (req,res,next) => {
 
 //GET all expenses for current user
 router.get('/currentUser', async (req,res) => {
-    // Todo: create a require login middle ware
-    //console.log(req.user.dataValues.id);
+    if (!req.user){
+        return res.status(401).send({error:'You must log in!'});
+    }
     const expenses = await UserExpenses.findAll(
         { where: {userId: req.user.dataValues.id}, 
           order: [
@@ -92,12 +93,37 @@ router.get('/currentUser/currentMonth', async (req,res, next) => {
 //POST to create a new user expense (based on USER_ID)
 router.post('/add', (req,res) => {
 
-    let {userId, expenseMonthly, expenseType, description, realAmount, realFrequency, expenseMonth, expenseYear} = req.body;
-
+    let {expenseMonthly, expenseType, description, realAmount, realFrequency, expenseMonth, expenseYear} = req.body;
+    let userId = req.user.dataValues.id;
 
     //insert into table
     UserExpenses.create({
         userId, expenseMonthly, expenseType, description, realAmount, realFrequency, expenseMonth, expenseYear
+    }) 
+    .then(userExpense => res.send(userExpense))
+    .catch(err => console.log(err));
+})
+
+//POST to create a new user expense (based on currently login user)
+router.post('/currentUser/add', (req,res) => {
+    if (!req.user){
+        return res.status(401).send({error:'You must log in!'});
+    }
+    let userId = req.user.dataValues.id;
+    let {amountNeeded} = req.body;
+
+    let d = new Date();
+    let currentMonth = d.getMonth();
+    let currentYear = d.getFullYear();
+
+    //insert into table
+    UserExpenses.create({
+        userId,
+        expenseType: "other",
+        description: "Fullfill goals", 
+        realAmount: amountNeeded, 
+        expenseMonth: currentMonth, 
+        expenseYear: currentYear
     }) 
     .then(userExpense => res.send(userExpense))
     .catch(err => console.log(err));
