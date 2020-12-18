@@ -64,13 +64,13 @@ class Summary extends Component {
         this.props.fetchExpenses();
         this.props.fetchIncomes();
         this.props.fetchGoals();
-        Axios.get(`/userExpenses/currentUser/currentMonth`)
+        Axios.get(`/userExpenses/currentUser`)
             .then(res => {
                 const expensesCurrentMonth = res.data;
                 this.setState( {expensesCurrentMonth} );
             });
 
-        Axios.get(`/userIncomes/currentUser/currentMonth`)
+        Axios.get(`/userIncomes/currentUser`)
             .then(res => {
                 const incomesCurrentMonth = res.data;
                 this.setState( {incomesCurrentMonth} );
@@ -143,7 +143,17 @@ class Summary extends Component {
         const cash = groupByType.cash;
         let cashTotal = cash ? this.reduceByKey(cash, 'realAmount') : 0;
 
-        
+        let expenseObj = {
+            cardTotal,
+            householdTotal,
+            rentTotal,
+            mortgageTotal,
+            loanTotal,
+            insuranceTotal,
+            utilityTotal,
+            otherTotal,
+            cashTotal
+        }
 
 
 
@@ -168,6 +178,14 @@ class Summary extends Component {
         const otherIncome = groupByType2.other;
         let otherIncomeTotal = otherIncome ? this.reduceByKey(otherIncome, 'realAmount') : 0;
 
+        let incomeObj = {
+            salaryTotal,
+            cashIncomeTotal,
+            businessIncomeTotal,
+            investmentIncomeTotal,
+            gifttIncomeTotal,
+            otherIncomeTotal
+        }
 
         let expenseTotal = cardTotal + householdTotal + rentTotal + mortgageTotal + loanTotal + insuranceTotal + utilityTotal + cashTotal + otherTotal;
         let incomeTotal = salaryTotal + cashIncomeTotal + businessIncomeTotal + investmentIncomeTotal + gifttIncomeTotal + otherIncomeTotal;
@@ -189,12 +207,13 @@ class Summary extends Component {
                             </div>
                             <div className="collapsible-body">
                                 <div className="collection">
-                                    <a href="#!" className="collection-item"><span className="badge">$ {salaryTotal}</span>Salary</a>
-                                    <a href="#!" className="collection-item"><span className="badge">$ {cashIncomeTotal}</span>Cash</a>
-                                    <a href="#!" className="collection-item"><span className="badge">$ {businessIncomeTotal}</span>Business</a>
-                                    <a href="#!" className="collection-item"><span className="badge">$ {investmentIncomeTotal}</span>Investment</a>
-                                    <a href="#!" className="collection-item"><span className="badge">$ {gifttIncomeTotal}</span>Gift</a>
-                                    <a href="#!" className="collection-item"><span className="badge">$ {otherIncomeTotal}</span>Other</a>
+                                    {salaryTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {salaryTotal}</span>Salary</a> : <></>}
+                                    {cashIncomeTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {cashIncomeTotal}</span>Cash</a> : <></>}
+                                    {businessIncomeTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {businessIncomeTotal}</span>Business</a> : <></>}
+                                    {investmentIncomeTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {investmentIncomeTotal}</span>Investment</a> : <></>}
+                                    {gifttIncomeTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {gifttIncomeTotal}</span>Gift</a> : <></>}
+                                    {otherIncomeTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {otherIncomeTotal}</span>Other</a> : <></>}
+                                    
                                 </div>
                                 
                             </div>
@@ -208,16 +227,15 @@ class Summary extends Component {
                             </div>
                             <div className="collapsible-body">
                                 <div className="collection">
-                                <a href="#!" className="collection-item"><span className="badge">$ {cardTotal} </span>Credit Card Payment</a>
-                                <a href="#!" className="collection-item"><span className="badge">$ {householdTotal} </span>Household</a>
-                                <a href="#!" className="collection-item"><span className="badge">$ {rentTotal} </span>Rent</a>
-                                <a href="#!" className="collection-item"><span className="badge">$ {mortgageTotal} </span>Mortgage</a>
-                                <a href="#!" className="collection-item"><span className="badge">$ {loanTotal} </span>Loan</a>
-                                <a href="#!" className="collection-item"><span className="badge">$ {insuranceTotal} </span>Insurance</a>
-                                <a href="#!" className="collection-item"><span className="badge">$ {utilityTotal} </span>Utility</a>
-                                <a href="#!" className="collection-item"><span className="badge">$ {cashTotal} </span>Cash</a>
-                                <a href="#!" className="collection-item"><span className="badge">$ {otherTotal} </span>Other</a>
-                            
+                                {cardTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {cardTotal}</span>Credit Card Payment</a> : <></>}
+                                {householdTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {householdTotal}</span>Household</a> : <></>}
+                                {rentTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {rentTotal}</span>Rent</a> : <></>}
+                                {mortgageTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {mortgageTotal}</span>Mortgage</a> : <></>}
+                                {loanTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {loanTotal}</span>Loan</a> : <></>}
+                                {insuranceTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {insuranceTotal}</span>Insurance</a> : <></>}
+                                {utilityTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {utilityTotal}</span>Utility</a> : <></>}
+                                {cashTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {cashTotal}</span>Cash</a> : <></>}
+                                {otherTotal != 0 ? <a href="#!" className="collection-item"><span className="badge">$ {otherTotal}</span>Other</a> : <></>}                            
                                 </div>
                                 
                             </div>
@@ -226,7 +244,7 @@ class Summary extends Component {
                         <li>
                             <div className="collapsible-header"  style={{display: "block"}}>
                                 <div className="collection">
-                                <a href="#!" className="collection-item"><span className="badge">$ {currentMonthBalance}</span>Current Monthly Balance</a>
+                                <a href="#!" className="collection-item"><span className="badge">$ {currentMonthBalance}</span>Total Saving</a>
                                 </div>
                             </div>
                         </li>
@@ -235,18 +253,235 @@ class Summary extends Component {
                     <div className="row">
                         <div className="col s12 m12 ">
                             <div className="card-panel teal lighten-1 hoverable z-depth-1">
-                                <h4 className="white-text center-align">Good job! You have saved ${currentMonthBalance} this month.</h4>
+                                
+                                {this.renderGratsMsg(currentMonthBalance)}
                                 <p></p>
                             </div>
                         </div>
                         
                     </div>
-                    {this.renderChartAndTable(suggestedSaving, suggestedGoal, possibleExpense)}
+                    <div className="row">{this.renderIncomeChart(incomeObj)}</div>
+                    <div className="row">{this.renderExpenseChart(expenseObj)}</div>
+                    
             </>
         );
     }
-    
 
+    renderIncomeChart(obj) {
+        switch(this.props.auth){
+            case null:
+              return;
+            case false:
+              return;
+            default:
+                const data = {
+                    labels: ['Salary', 'Cash',  'Business', 'Investment', 'Gift', 'Other'],
+                    datasets: [
+                      {
+                        label: 'Suggested Balance Distribution',
+                        data: [obj.salaryTotal, obj.cashIncomeTotal, obj.businessIncomeTotal, obj.investmentIncomeTotal, obj.gifttIncomeTotal, obj.otherIncomeTotal],
+                        backgroundColor: [
+                          '#b3e5fc',
+                          '#b2ebf2',
+                          '#b2dfdb',
+                          '#c8e6c9',
+                          '#dcedc8',
+                          '#f0f4c3'
+                        ], 
+                        borderColor: [
+                          '#01579b',
+                          '#006064',
+                          '#004d40',
+                          '#1b5e20',
+                          '#33691e',
+                          '#827717'
+                        ],
+                        borderWidth: 1,
+                      },
+                    ],
+                }
+              return (
+                    <>
+                    
+                    <div className="row">
+                        <div className="col s12 m4 " style={{marginTop: "0px"}}>
+                            <h5 className="teal-text center-align">Income Distribution</h5>
+                            <table style={{marginTop: "25px"}}>
+                                
+                                <tbody>
+                                <tr className="light-blue lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Salary</td>
+                                    <td>{this.currencyFormatter.format(obj.salaryTotal)}</td>
+                                </tr>
+
+                                <tr className="cyan lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Cash</td>              
+                                    <td>{this.currencyFormatter.format(obj.cashIncomeTotal)}</td>
+                                </tr>
+
+                                <tr className="teal lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Business</td>
+                                    <td>{this.currencyFormatter.format(obj.businessIncomeTotal)}</td>
+                                </tr>
+
+                                <tr className="green lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Investment</td>
+                                    <td>{this.currencyFormatter.format(obj.investmentIncomeTotal)}</td>
+                                </tr>
+
+                                <tr className="light-green lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Gift</td>
+                                    <td>{this.currencyFormatter.format(obj.gifttIncomeTotal)}</td>
+                                </tr>
+
+                                <tr className="lime lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Other</td>
+                                    <td>{this.currencyFormatter.format(obj.otherIncomeTotal)}</td>
+                                </tr>
+
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="col s12 m8 "><Doughnut data={data} /></div>
+                    </div>
+                     
+                    </>
+              );
+        }
+    }
+
+    renderExpenseChart(obj) {
+        switch(this.props.auth){
+            case null:
+              return;
+            case false:
+              return;
+            default:
+                const data = {
+                    labels: ['Credit Card Payment', 'Household',  'Rent', 'Mortgage', 'Loan', 'Insurance', 'Utilities', 'Cash', 'Other'],
+                    datasets: [
+                      {
+                        label: 'Suggested Balance Distribution',
+                        data: [obj.cardTotal, obj.householdTotal, obj.rentTotal, obj.mortgageTotal, obj.loanTotal, obj.insuranceTotal, obj.utilityTotal, obj.cashTotal, obj.otherTotal],
+                        backgroundColor: [
+                          '#fff9c4',
+                          '#ffecb3',
+                          '#ffe0b2',
+                          '#ffccbc',
+                          '#ffcdd2',
+                          '#f8bbd0',
+                          '#e1bee7',
+                          '#d1c4e9',
+                          '#c5cae9'
+                        ], 
+                        borderColor: [
+                          '#f57f17 ',
+                          '#ff6f00',
+                          '#e65100',
+                          '#bf360c',
+                          '#b71c1c',
+                          '#880e4f',
+                          '#4a148c',
+                          '#311b92',
+                          '#1a237e'
+                        ],
+                        borderWidth: 1,
+                      },
+                    ],
+                }
+              return (
+                    <>
+                    
+                    <div className="row">
+                        <div className="col s12 m4 " style={{marginTop: "25px"}}>
+                            <h5 className="teal-text center-align">Expenses Distribution</h5>
+                            <table style={{marginTop: "25px"}}>
+                                <tbody>
+                                <tr className="yellow lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Credit Card Payment</td>
+                                    <td>{this.currencyFormatter.format(obj.cardTotal)}</td>
+                                </tr>
+
+                                <tr className="amber lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Household</td>              
+                                    <td>{this.currencyFormatter.format(obj.householdTotal)}</td>
+                                </tr>
+
+                                <tr className="orange lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Rent</td>
+                                    <td>{this.currencyFormatter.format(obj.rentTotal)}</td>
+                                </tr>
+
+                                <tr className="deep-orange lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Mortgage</td>
+                                    <td>{this.currencyFormatter.format(obj.mortgageTotal)}</td>
+                                </tr>
+
+                                <tr className="red lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Loan</td>
+                                    <td>{this.currencyFormatter.format(obj.loanTotal)}</td>
+                                </tr>
+
+                                <tr className="pink lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Insurance</td>
+                                    <td>{this.currencyFormatter.format(obj.insuranceTotal)}</td>
+                                </tr>
+
+                                <tr className="purple lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Utilities</td>
+                                    <td>{this.currencyFormatter.format(obj.utilityTotal)}</td>
+                                </tr>
+
+                                <tr className="deep-purple lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Cash</td>
+                                    <td>{this.currencyFormatter.format(obj.cashTotal)}</td>
+                                </tr>
+
+                                <tr className="indigo lighten-4">
+                                    <td style={{fontWeight: "bold"}}>Other</td>
+                                    <td>{this.currencyFormatter.format(obj.otherTotal)}</td>
+                                </tr>
+                                
+                                </tbody>
+
+                                
+                            </table>
+                        </div>
+                        <div className="col s12 m8 " style={{marginTop:"120px"}}><Doughnut data={data} /></div>
+                    </div>
+                     
+                    </>
+              );
+        }
+    }
+    
+    currencyFormatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      
+        // These options are needed to round to whole numbers if that's what you want.
+        minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+        //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+      });
+
+    renderGratsMsg(balance){
+        if(balance == 0){
+            return(
+                <h4 className="white-text center-align">Start saving today!</h4>
+            )
+        }
+        if(balance > 0){
+            return(
+                <h4 className="white-text center-align">Good job! You have saved {this.currencyFormatter.format(balance)}!</h4>
+            )
+        }
+        if(balance < 0){
+            return(
+                <h4 className="white-text center-align">You need to spend less!</h4>
+            )
+        }
+    }
     
     renderSummary() {
         
@@ -271,13 +506,13 @@ class Summary extends Component {
             M.Dropdown.init(Dropdown, dropdownOpt);
               return (
                 <span>
-                  <p className="teal-text">Monthly breakdown for: </p> 
-                  <a className='dropdown-trigger btn' href='#' data-target='dropdown1'>Current month</a>
+                  <p className="teal-text">Breakdown for: </p> 
+                  <a className='dropdown-trigger btn' href='#' data-target='dropdown1'>Total Saving</a>
 
                   <ul id='dropdown1' className='dropdown-content'>
+                        <li><a href="#!">current month</a></li>
                         <li><a href="#!">Last month</a></li>
                         <li><a href="#!">Last 3 months</a></li>
-                        <li><a href="#!">Year to the day</a></li>
                   </ul>
                   {this.renderData()}
                     
@@ -286,70 +521,8 @@ class Summary extends Component {
         }
     }
 
-
-    renderChartAndTable(save, goal, expense) {
-        switch(this.props.auth){
-            case null:
-              return;
-            case false:
-              return;
-            default:
-                const data = {
-                    labels: ['Long-term Saving', 'Goals',  'Expenses'],
-                    datasets: [
-                      {
-                        label: 'Suggested Balance Distribution',
-                        data: [save, goal, expense],
-                        backgroundColor: [
-                          'rgba(255, 99, 132, 0.2)',
-                          'rgba(75, 192, 192, 0.8)',
-                          'rgba(54, 162, 235, 0.2)',
-                        ],
-                        borderColor: [
-                          'rgba(255, 99, 132, 1)',
-                          'rgba(75, 192, 192, 1)',
-                          'rgba(54, 162, 235, 1)',
-                        ],
-                        borderWidth: 1,
-                      },
-                    ],
-                }
-              return (
-                    <>
-                    
-                    <div className="row">
-                        <div className="col s12 m4 " style={{marginTop: "25px"}}>
-                            <h5 className="teal-text center-align">Suggested Balance Distribution</h5>
-                            <table style={{marginTop: "25px"}}>
-                                
-
-                                <tbody>
-                                <tr className="blue lighten-5">
-                                    <td>Long-term Saving</td>
-                            
-                                    <td>${save}</td>
-                                </tr>
-                                <tr className="teal lighten-3">
-                                    <td >Goals</td>
-                                  
-                                    <td>${goal}</td>
-                                </tr>
-                                <tr className="red lighten-5">
-                                    <td >Possible Expenses</td>
-                            
-                                    <td>${expense}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className="col s12 m8 "><Doughnut data={data} /></div>
-                    </div>
-                     
-                    </>
-              );
-        }
-    }
     
+ 
   
     render() {
 

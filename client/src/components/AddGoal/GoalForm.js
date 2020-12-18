@@ -7,18 +7,25 @@ import M from "materialize-css";
 import GoalFieldDropdown from './GoalFieldDropdown';
 import GoalFieldNumber from './GoalFieldNumber';
 import * as actions from '../../actions';
+import GoalFieldDatePicker from './GoalFieldDatePicker';
 
 
 class GoalForm extends Component {
     componentDidMount() {
         let Collapsible = document.querySelectorAll('.collapsible');
         let FormSelect = document.querySelectorAll('select');
+        let DatePicker = document.querySelectorAll('.datepicker');
         let options = {
             
         };
-        
+        let DatePickerOptions = {
+            format: 'mm/dd/yyyy',
+            autoClose: true
+        };
         M.Collapsible.init(Collapsible, options);
         M.FormSelect.init(FormSelect, options);
+        M.Datepicker.init(DatePicker, DatePickerOptions);
+        
     }
     renderFields(){
         
@@ -26,9 +33,11 @@ class GoalForm extends Component {
             <>
             <Field component={GoalField} label='Title*' name='title' type='text' />
             <Field component={GoalFieldNumber} label='Amount Needed*' name='amountNeeded' type='number'/>
+            <Field component={GoalFieldDropdown} label='Priority*' name='priority' type='number' />
+            <Field component={GoalFieldDatePicker} label='Reach by Date*' name='reachByDate' type='date' />
             <Field component={GoalField} label='Description' name='description' type='text' />
-            <Field component={GoalField} label='Reach by Date' name='reachByDate' type='text' />
-            <Field component={GoalField} label='Priority' name='priority' type='number' />
+            
+            
             </>
         );
         
@@ -54,11 +63,11 @@ class GoalForm extends Component {
                         <div className="row">
                             
                             <div className="input-field col s12 m4 offset-m1">
-                                <a className="btn btn-large waves-effect waves-light col s12 teal lighten-3" href="/summary">Cancel</a>
+                                <a className="btn btn-large col s12 teal lighten-3" href="/summary">Cancel</a>
                             </div>
                             <div className="input-field col s12 m4 offset-m2">
                                 <button 
-                                    className="btn btn-large waves-effect waves-light col s12 teal darken-3" 
+                                    className="btn btn-large col s12 teal darken-3" 
                                     type="submit" 
                                     name="action"
                                 >
@@ -83,6 +92,14 @@ function validate(values) {
 
     if (!values.amountNeeded) {
         errors.amountNeeded = 'You must provide an amount';
+    }
+
+    if (!values.priority) {
+        errors.priority = 'You must choose a priority';
+    }
+
+    if (!values.reachByDate) {
+        errors.reachByDate= 'You must provide a date';
     }
 
     if (isNaN(Number(values.amountNeeded))) {

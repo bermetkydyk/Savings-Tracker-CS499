@@ -10,13 +10,10 @@ export default ({ input, label, meta: { error, touched } }) => {
         <div>
             <label>{label}</label>
             <select {...input} style={{ marginBottom: "5px"}}>
-                <option value="" disabled selected>Choose an income type</option>
-                <option value="salary">Salary</option>
-                <option value="cash">Cash</option>
-                <option value="business">Business</option>
-                <option value="investment">Investment</option>
-                <option value="gift">Gift</option>
-                <option value="other">Other</option>
+                <option value="" disabled selected>Choose priority</option>
+                <option value="1">High</option>
+                <option value="2">Medium</option>
+                <option value="3">Low</option>
             </select>
             <div className="red-text" style={{ marginBottom: "20px"}}>{ touched && error }</div>
             

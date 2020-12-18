@@ -30,6 +30,7 @@ class Header extends Component {
             <span>
             <li className="tab"><a href="/">Home</a></li>
             <li><a href="/setting">Setting</a></li>
+            <li><a href="/Guide">Guide</a></li>
             <li><a href="/auth/logout">Logout</a></li>
             </span>
           );

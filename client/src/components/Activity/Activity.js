@@ -27,13 +27,13 @@ class Activity extends Component {
         M.Tabs.init(tabs, options);
        
 
-        axios.get(`/userIncomes/currentUser/currentMonth`)
+        axios.get(`/userIncomes/currentUser`)
             .then(res => {
                 const incomesArr = res.data;
                 this.setState( { incomesArr });
             })
 
-        axios.get(`/userExpenses/currentUser/currentMonth`)
+        axios.get(`/userExpenses/currentUser`)
             .then(res => {
                 const expenseArr = res.data;
                 this.setState( { expenseArr });
@@ -120,12 +120,13 @@ class Activity extends Component {
                             <p>Description: {expense.description}
                                 <span className="badge teal-text">
                                 
-                                    <a class="teal-text modal-trigger" href={'#EditModal'+ expense.expenseId}>Edit</a>
+                                   
                                 </span>
                             </p>
                             <p>Created At: {expense.createdAt}
-                                <span className="badge black-text">
-                                    <a class="black-text modal-trigger" href={'#DeleteModal'+ expense.expenseId}>Delete</a>
+                                <span className="badge">
+                                    <button className="modal-trigger  btn white-text" href={'#EditModal'+ expense.expenseId} style={{fontWeight: "bold", marginRight: "15px"}}>Edit</button>
+                                    <button className="modal-trigger btn white-text" href={'#DeleteModal'+ expense.expenseId} style={{fontWeight: "bold"}}>Delete</button>
                                 </span>
                             </p>
                         </div>
@@ -206,10 +207,11 @@ class Activity extends Component {
                 <div className='card darken-1' key={income.incomeId}>
                     <div className="card-content">
                         <p className="card-title teal-text">Income from {this.formateOutput(income.incomeType)}<span className="badge teal-text" style={{fontSize: "25px"}}>${income.realAmount}</span></p>
-                        <p>Description: {income.description}<span className="badge teal-text">Edit</span></p>
+                        <p>Description: {income.description}</p>
                         <p>Created At: {income.createdAt}
                             <span className="badge">
-                                <button className="btn btn-danger" onClick={(e) => this.deleteIncome(income.incomeId, e)}>Delete</button>
+                                <button className="btn btn-danger whilt-text" style={{fontWeight: "bold", marginRight: "15px"}}>Edit</button>
+                                <button className="btn btn-danger" onClick={(e) => this.deleteIncome(income.incomeId, e)} style={{fontWeight: "bold"}}>Delete</button>
                             </span>
                         </p>
                     </div>

@@ -6,6 +6,7 @@ import * as actions from '../actions';
 import Header from './Header';
 import Landing from './Landing/Landing';
 import Bottombar from './Bottombar';
+import Guide from './Guide';
 import Footer from './Footer';
 import Summary from './Summary/Summary';
 import Activity from './Activity/Activity';
@@ -30,6 +31,7 @@ class App extends Component {
                 <Router>
                     <div>
                         <Route exact path="/" component={Landing} />
+                        <Route exact path="/Guide" component={Guide} />
                         <Route exact path="/summary" component={Summary} />
                         <Route exact path="/activity" component={Activity} />
                         <Route exact path="/goal" component={Goal} />

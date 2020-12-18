@@ -5,6 +5,19 @@ import { submit } from 'redux-form';
 import * as actions from '../../actions';
 import { withRouter} from 'react-router-dom';
 
+function formatePriority(prio){
+    switch(prio){
+        case 1:
+            return "High";
+        case 2:
+            return "Medium";
+        case 3:
+            return "Low";
+        default:
+            return prio;
+    }
+}
+
 const GoalFormReview = ( { onCancel, formValues, submitGoal, userId, history }) => {
     
     var date = new Date();
@@ -12,9 +25,9 @@ const GoalFormReview = ( { onCancel, formValues, submitGoal, userId, history }) 
     var month = date.getMonth();
   
     formValues['userId'] = userId;
-    formValues['incomeMonth'] = month;
-    formValues['incomeYear'] = year;
+    formValues['isComplete'] = 0;
     console.log(formValues);
+
 
     return (
         <>
@@ -27,25 +40,27 @@ const GoalFormReview = ( { onCancel, formValues, submitGoal, userId, history }) 
                 <h5>Please confirm your entries</h5>
                 <div>
                     <div>
-                        <label>Title*</label>
+                        <label>Title*:</label>
                         <div>{formValues.title}</div>
                     </div>
                     <div>
-                        <label>Amount Needed*</label>
+                        <label>Amount Needed*:</label>
                         <div>{formValues.amountNeeded}</div>
                     </div>
                     <div>
-                        <label>Description</label>
-                        <div>{formValues.description}</div>
+                        <label>Priority*:</label>
+                        <div>{formValues.priority}</div>
                     </div>
                     <div>
-                        <label>Description</label>
+                        <label>Reach by date*:</label>
                         <div>{formValues.reachByDate}</div>
                     </div>
                     <div>
-                        <label>Priority</label>
-                        <div>{formValues.priority}</div>
+                        <label>Description:</label>
+                        <div>{formValues.description}</div>
                     </div>
+                    
+                   
                 </div>
 
                 <div className="row">

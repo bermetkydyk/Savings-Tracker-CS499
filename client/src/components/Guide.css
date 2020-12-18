@@ -1,0 +1,37 @@
+/* .tabs .tab a.active {
+      background-color:#b2dfdb;
+      color:#000;
+  } /*Background and text color when a tab is active*/
+  
+  /* .tabs .tab a:focus, .tabs .tab a:focus.active {
+      background-color:#b2dfdb;
+      color:#000;
+  } /*Background and text color when a tab is active*/
+  
+  /* .tabs .indicator {
+      background-color:#26A69A;
+  }  */
+
+.guide_image {
+      object-fit: contain;
+      width: 1000px;
+}
+.bottom_image {
+      object-fit: contain;
+      width: 1000px;
+}
+
+.welcome {
+      color: #32a8a0;
+      text-decoration: underline;
+}
+.summary {
+      background-color:#26A69A;
+      color: black
+}
+
+@media only screen and (max-width:999px){
+.guide_image {
+      width: 500px;
+}
+}

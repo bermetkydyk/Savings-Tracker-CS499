@@ -55,7 +55,7 @@ class ExpenseForm extends Component {
                             </div>
                             <div className="input-field col s12 m4 offset-m2">
                                 <button 
-                                    className="btn btn-large waves-effect waves-light col s12 teal darken-3" 
+                                    className="btn btn-large col s12 teal darken-3" 
                                     type="submit" 
                                     name="action"
                                     
